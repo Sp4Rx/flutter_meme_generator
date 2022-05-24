@@ -34,16 +34,17 @@ class _MemeEditorState extends State<MemeEditor> {
         builder: (context, state) {
           if (state is MemeLoaded) {
             return Center(
-                child: Meme(
-              imgUrl: state.meme.imageUrl!,
-              memeTextObj: state.meme.texts!,
-              onDeleteTextPressed: (int position) {
-                context.read<MemeEditorBloc>().add(DeleteText(position));
-              },
-              onEditTextPressed: (int position) {
-                context.read<MemeEditorBloc>().add(EditText(position));
-              },
-            ));
+              child: Meme(
+                imgUrl: state.meme.imageUrl!,
+                memeTextObj: state.meme.texts!,
+                onDeleteTextPressed: (int position) {
+                  context.read<MemeEditorBloc>().add(DeleteText(position));
+                },
+                onEditTextPressed: (int position) {
+                  context.read<MemeEditorBloc>().add(EditText(position));
+                },
+              ),
+            );
           } else if (state is MemeLoading) {
             return const Center(child: CircularProgressIndicator());
           }
