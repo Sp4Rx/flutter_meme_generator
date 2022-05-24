@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:meme_generator/core/exceptions/ApiException.dart';
+import 'package:meme_generator/core/exceptions/api_exception.dart';
 
 class ApiClient {
   static final ApiClient _instance = ApiClient.internal();

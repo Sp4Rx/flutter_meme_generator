@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meme_generator/blocs/meme_editor_bloc.dart';
-import 'package:meme_generator/ui/screens/MemeEditor.dart';
+import 'package:meme_generator/ui/screens/meme_editor.dart';
 
 void main() {
   runApp(const MyApp());

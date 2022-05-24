@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meme_generator/repository/meme_repo/models/meme_obj.dart';
-import 'package:meme_generator/ui/atoms/MemeImage.dart';
-import 'package:meme_generator/ui/atoms/MemeText.dart';
+import 'package:meme_generator/ui/atoms/meme_image.dart';
+import 'package:meme_generator/ui/atoms/meme_text.dart';
 
 class Meme extends StatelessWidget {
   final String imgUrl;
