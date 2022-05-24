@@ -34,6 +34,8 @@ class _MemeEditorState extends State<MemeEditor> {
               imgUrl: state.meme.imageUrl!,
               memeTextObj: state.meme.texts!,
             ));
+          } else if (state is MemeLoading) {
+            return const Center(child: CircularProgressIndicator());
           }
           return Container();
         },

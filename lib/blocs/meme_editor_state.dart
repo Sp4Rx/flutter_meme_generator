@@ -5,7 +5,7 @@ abstract class MemeEditorState {}
 
 class MemeEditorInitial extends MemeEditorState {}
 
-class LoadingMeme extends MemeEditorState {}
+class MemeLoading extends MemeEditorState {}
 
 class MemeLoaded extends MemeEditorState {
   final MemeObj meme;

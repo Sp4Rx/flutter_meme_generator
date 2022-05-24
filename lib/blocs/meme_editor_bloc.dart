@@ -21,7 +21,7 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
 
   FutureOr<void> _handleLoadMeme(
       LoadMeme event, Emitter<MemeEditorState> emit) async {
-    emit(LoadingMeme());
+    emit(MemeLoading());
     final memes = await _memeRepo.getMemes();
     //return only one meme for testing only
     emit(MemeLoaded(memes[0]));
