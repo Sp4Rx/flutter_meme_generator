@@ -9,6 +9,12 @@ class GenerateMeme extends MemeEditorEvent {}
 
 class AddText extends MemeEditorEvent {}
 
+class DeleteText extends MemeEditorEvent {
+  final int position;
+
+  DeleteText(this.position);
+}
+
 class EditText extends MemeEditorEvent {
   final int idPos;
   final MemeTextObj memeText;
