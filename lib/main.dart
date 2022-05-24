@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meme_generator/blocs/meme_editor_bloc.dart';
-import 'package:meme_generator/ui/screens/meme_editor.dart';
+import 'package:meme_generator/ui/screens/meme_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MemeEditor(),
+        home: const MemeHome(),
       ),
     );
   }

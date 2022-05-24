@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meme_generator/blocs/meme_editor_bloc.dart';
 import 'package:meme_generator/ui/molecules/meme.dart';
 
-class MemeEditor extends StatefulWidget {
-  const MemeEditor({
+class MemeHome extends StatefulWidget {
+  const MemeHome({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MemeEditor> createState() => _MemeEditorState();
+  State<MemeHome> createState() => _MemeHomeState();
 }
 
-class _MemeEditorState extends State<MemeEditor> {
+class _MemeHomeState extends State<MemeHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
