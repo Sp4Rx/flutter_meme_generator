@@ -19,6 +19,13 @@ class _MemeEditorState extends State<MemeEditor> {
       appBar: AppBar(
         title: const Text('Meme 🤪'),
       ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Add new text',
+        onPressed: () {
+          context.read<MemeEditorBloc>().add(AddText());
+        },
+        child: const Icon(Icons.add),
+      ),
       body: BlocBuilder<MemeEditorBloc, MemeEditorState>(
         builder: (context, state) {
           if (state is MemeLoaded) {

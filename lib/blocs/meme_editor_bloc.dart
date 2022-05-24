@@ -9,7 +9,7 @@ part 'meme_editor_event.dart';
 part 'meme_editor_state.dart';
 
 class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
-  final MemeRepo memeRepo = MemeRepo();
+  final MemeRepo _memeRepo = MemeRepo();
 
   MemeEditorBloc() : super(MemeEditorInitial()) {
     on<LoadMeme>(_handleLoadMeme);
@@ -21,7 +21,7 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
   FutureOr<void> _handleLoadMeme(
       LoadMeme event, Emitter<MemeEditorState> emit) async {
     emit(LoadingMeme());
-    final memes = await memeRepo.getMemes();
+    final memes = await _memeRepo.getMemes();
     //return only one meme for testing only
     emit(MemeLoaded(memes[0]));
   }
@@ -29,7 +29,30 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
   FutureOr<void> _handleGenerateMeme(
       GenerateMeme event, Emitter<MemeEditorState> emit) {}
 
-  FutureOr<void> _handleAddText(AddText event, Emitter<MemeEditorState> emit) {}
+  FutureOr<void> _handleAddText(AddText event, Emitter<MemeEditorState> emit) {
+    final state = this.state;
+    if (state is MemeLoaded) {
+      emit(
+        MemeLoaded(state.meme.copyWith(
+          texts: List.from(state.meme.texts!)
+            ..add(MemeTextObj.fromJson({
+              "textData": "Demo",
+              "xPos": 0,
+              "yPos": 0,
+              "maxWidth": 120,
+              "maxHeight": 100,
+              "style": "Roboto",
+              "fontSize": 12,
+              "hAlignment": "center",
+              "vAlignment": "center",
+              "opacity": 1,
+              "foregroundColor": "#000000",
+              "bgColor": "#FFFFFF"
+            })),
+        )),
+      );
+    }
+  }
 
   FutureOr<void> _handleEditText(
       EditText event, Emitter<MemeEditorState> emit) {}
