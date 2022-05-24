@@ -16,10 +16,7 @@ class MemeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        margin: const EdgeInsets.only(
-          top: 16,
-          right: 16,
-        ),
+        margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.blue,
@@ -41,7 +38,7 @@ class MemeText extends StatelessWidget {
         ),
       ),
       Positioned(
-        right: 0,
+        left: 0,
         top: 0,
         child: Container(
           width: 35,
@@ -53,6 +50,23 @@ class MemeText extends StatelessWidget {
             iconSize: 18,
             color: Colors.white,
             icon: const Icon(Icons.edit),
+            onPressed: onEditPressed,
+          ),
+        ),
+      ),
+      Positioned(
+        right: 0,
+        top: 0,
+        child: Container(
+          width: 35,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.lightBlueAccent,
+          ),
+          child: IconButton(
+            iconSize: 18,
+            color: Colors.white,
+            icon: const Icon(Icons.delete_forever),
             onPressed: onEditPressed,
           ),
         ),
