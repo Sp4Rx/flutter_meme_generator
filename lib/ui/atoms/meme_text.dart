@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:meme_generator/core/utils/extenstions.dart';
 import 'package:meme_generator/repository/meme_repo/models/meme_obj.dart';
 
@@ -33,7 +34,8 @@ class MemeText extends StatelessWidget {
         child: Center(
           child: Text(
             data.textData!,
-            style: TextStyle(
+            style: GoogleFonts.getFont(
+              data.style!,
               color: data.foregroundColor!.toColor(),
             ),
           ),

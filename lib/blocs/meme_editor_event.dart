@@ -28,3 +28,9 @@ class EditTextSavePressed extends MemeEditorEvent {
 
   EditTextSavePressed(this.textData);
 }
+
+class EditTextFontChangePressed extends MemeEditorEvent {
+  final String fontFamily;
+
+  EditTextFontChangePressed(this.fontFamily);
+}

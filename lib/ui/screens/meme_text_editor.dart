@@ -48,7 +48,7 @@ class MemeTextEditor extends StatelessWidget {
                         maxLines: null,
                         controller: controller,
                         style: GoogleFonts.getFont(
-                          _fonts[1],
+                          memeTextObj.style!,
                         ),
                       ),
                       SizedBox.fromSize(
@@ -59,23 +59,36 @@ class MemeTextEditor extends StatelessWidget {
                         child: Row(
                           children: [
                             ..._fonts.map(
-                              (e) => Container(
-                                height: 30,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 2),
-                                padding: const EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey,
+                              (e) => GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<MemeEditorBloc>()
+                                      .add(EditTextFontChangePressed(e));
+                                },
+                                child: Container(
+                                  height: 30,
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 2),
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: (e == memeTextObj.style!)
+                                        ? Colors.blue
+                                        : null,
+                                    border: Border.all(
+                                      color: Colors.grey,
+                                    ),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(12.0),
+                                    ),
                                   ),
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(12.0),
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    e,
-                                    style: GoogleFonts.getFont(e),
+                                  child: Center(
+                                    child: Text(
+                                      e,
+                                      style: GoogleFonts.getFont(e,
+                                          color: (e == memeTextObj.style!)
+                                              ? Colors.white
+                                              : null),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -93,7 +106,6 @@ class MemeTextEditor extends StatelessWidget {
                                   controller.text,
                                 ),
                               );
-                          Navigator.pop(context);
                         },
                         child: const Text('Save'),
                       ),

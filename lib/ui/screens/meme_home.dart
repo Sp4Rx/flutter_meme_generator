@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meme_generator/blocs/meme_editor_bloc.dart';
 import 'package:meme_generator/ui/molecules/meme.dart';
-import 'package:meme_generator/ui/screens/meme_text_editor.dart';
 
 class MemeHome extends StatefulWidget {
   const MemeHome({
@@ -27,17 +26,9 @@ class _MemeHomeState extends State<MemeHome> {
         },
         child: const Icon(Icons.add),
       ),
-      body: BlocConsumer<MemeEditorBloc, MemeEditorState>(
-        listener: (BuildContext context, state) {
-          if (state is MemeTextEditing) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MemeTextEditor()),
-            );
-          }
-        },
+      body: BlocBuilder<MemeEditorBloc, MemeEditorState>(
         buildWhen: (prevState, currentState) {
-          return currentState is! MemeTextEditing;
+          return currentState is MemeLoaded;
         },
         builder: (context, state) {
           if (state is MemeLoaded) {
@@ -53,8 +44,6 @@ class _MemeHomeState extends State<MemeHome> {
                 },
               ),
             );
-          } else if (state is MemeLoading) {
-            return const Center(child: CircularProgressIndicator());
           }
           return const SizedBox.shrink();
         },
