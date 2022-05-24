@@ -20,3 +20,5 @@ class EditText extends MemeEditorEvent {
 
   EditText(this.idPos);
 }
+
+class EditTextBackPressed extends MemeEditorEvent {}

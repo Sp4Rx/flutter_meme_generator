@@ -18,6 +18,7 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
     on<AddText>(_handleAddText);
     on<EditText>(_handleEditText);
     on<DeleteText>(_handleDeleteText);
+    on<EditTextBackPressed>(_handleEditorBackPressed);
   }
 
   FutureOr<void> _handleLoadMeme(
@@ -71,6 +72,14 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
       emit(MemeLoaded(state.meme.copyWith(
         texts: List.from(state.meme.texts!)..removeAt(event.position),
       )));
+    }
+  }
+
+  FutureOr<void> _handleEditorBackPressed(
+      EditTextBackPressed event, Emitter<MemeEditorState> emit) {
+    final state = this.state;
+    if (state is MemeTextEditing) {
+      emit(MemeLoaded(state.meme));
     }
   }
 }
