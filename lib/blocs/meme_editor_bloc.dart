@@ -3,8 +3,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:meme_generator/repository/meme_repo/meme_repo.dart';
 import 'package:meme_generator/repository/meme_repo/models/meme_obj.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:screenshot/screenshot.dart';
 
 part 'meme_editor_event.dart';
 part 'meme_editor_state.dart';
@@ -32,7 +35,21 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
   }
 
   FutureOr<void> _handleGenerateMeme(
-      GenerateMeme event, Emitter<MemeEditorState> emit) {}
+      GenerateMeme event, Emitter<MemeEditorState> emit) {
+    final state = this.state;
+    if (state is MemeLoaded) {
+      event.screenshotController.capture().then((value) async {
+        //TODO: Add a intermediate loading state
+        final result = await [Permission.storage].request();
+        final status = result[Permission.storage];
+        if (status == PermissionStatus.granted) {
+          ImageGallerySaver.saveImage(value!, name: 'Meme');
+          emit(MemeGenerated());
+        }
+        //TODO: Handle denied state
+      });
+    }
+  }
 
   FutureOr<void> _handleAddText(AddText event, Emitter<MemeEditorState> emit) {
     final state = this.state;

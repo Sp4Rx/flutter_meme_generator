@@ -20,6 +20,4 @@ class MemeTextEditing extends MemeEditorState {
   MemeTextEditing(this.idPos, this.meme);
 }
 
-class GeneratingMeme extends MemeEditorState {}
-
 class MemeGenerated extends MemeEditorState {}

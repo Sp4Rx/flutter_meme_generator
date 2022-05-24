@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
               return const Scaffold(
                 body: Center(child: CircularProgressIndicator()),
               );
+            } else if (state is MemeGenerated) {
+              return const Scaffold(
+                body: Center(child: Text('Meme Generated check gallery')),
+              );
             }
             return const SizedBox.shrink();
           },

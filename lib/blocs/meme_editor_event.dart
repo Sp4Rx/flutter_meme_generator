@@ -5,7 +5,11 @@ abstract class MemeEditorEvent {}
 
 class LoadMeme extends MemeEditorEvent {}
 
-class GenerateMeme extends MemeEditorEvent {}
+class GenerateMeme extends MemeEditorEvent {
+  final ScreenshotController screenshotController;
+
+  GenerateMeme(this.screenshotController);
+}
 
 class AddText extends MemeEditorEvent {}
 
