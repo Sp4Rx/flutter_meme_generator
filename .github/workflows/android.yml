@@ -17,7 +17,7 @@ jobs:
       with:
         distribution: 'zulu'
         java-version: '11'
-    - name: Build apk
+    - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.0.1'
@@ -26,10 +26,12 @@ jobs:
         cache-key: flutter # optional, change this to force refresh cache
         cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
         architecture: x64 # optional, x64 or arm64
-    - run: flutter pub get
-    - run: flutter build apk
-    - name: Upload APK
+    - name: Intalling dependencies
+      run: flutter pub get
+    - name: Build APK
+      run: flutter build apk --debug
+    - name: Export apk artifact
       uses: actions/upload-artifact@v3
       with:
         name: apk
-        path: build/app/outputs/flutter-apk/*.apk
+        path: build/app/outputs/flutter-apk/app-debug.apk
