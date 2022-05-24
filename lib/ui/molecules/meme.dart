@@ -6,6 +6,7 @@ import 'package:meme_generator/ui/atoms/MemeText.dart';
 class Meme extends StatelessWidget {
   final String imgUrl;
   final List<MemeTextObj> memeTextObj;
+  final Function(int position) onEditTextPressed;
   final Function(int position) onDeleteTextPressed;
 
   const Meme({
@@ -13,6 +14,7 @@ class Meme extends StatelessWidget {
     required this.imgUrl,
     required this.memeTextObj,
     required this.onDeleteTextPressed,
+    required this.onEditTextPressed,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,9 @@ class Meme extends StatelessWidget {
                   data: e.value,
                   onDeletePressed: () {
                     onDeleteTextPressed(e.key);
+                  },
+                  onEditPressed: () {
+                    onEditTextPressed(e.key);
                   },
                 ),
               ),

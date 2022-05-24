@@ -13,6 +13,13 @@ class MemeLoaded extends MemeEditorState {
   MemeLoaded(this.meme);
 }
 
+class MemeTextEditing extends MemeEditorState {
+  final int idPos;
+  final MemeObj meme;
+
+  MemeTextEditing(this.idPos, this.meme);
+}
+
 class GeneratingMeme extends MemeEditorState {}
 
 class MemeGenerated extends MemeEditorState {}

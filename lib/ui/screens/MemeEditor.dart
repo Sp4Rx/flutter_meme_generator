@@ -26,7 +26,11 @@ class _MemeEditorState extends State<MemeEditor> {
         },
         child: const Icon(Icons.add),
       ),
-      body: BlocBuilder<MemeEditorBloc, MemeEditorState>(
+      body: BlocConsumer<MemeEditorBloc, MemeEditorState>(
+        listener: (BuildContext context, state) {},
+        buildWhen: (prevState, currentState) {
+          return currentState is! MemeTextEditing;
+        },
         builder: (context, state) {
           if (state is MemeLoaded) {
             return Center(
@@ -35,6 +39,9 @@ class _MemeEditorState extends State<MemeEditor> {
               memeTextObj: state.meme.texts!,
               onDeleteTextPressed: (int position) {
                 context.read<MemeEditorBloc>().add(DeleteText(position));
+              },
+              onEditTextPressed: (int position) {
+                context.read<MemeEditorBloc>().add(EditText(position));
               },
             ));
           } else if (state is MemeLoading) {

@@ -17,7 +17,6 @@ class DeleteText extends MemeEditorEvent {
 
 class EditText extends MemeEditorEvent {
   final int idPos;
-  final MemeTextObj memeText;
 
-  EditText(this.idPos, this.memeText);
+  EditText(this.idPos);
 }

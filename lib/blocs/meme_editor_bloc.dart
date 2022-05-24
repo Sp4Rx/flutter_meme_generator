@@ -57,7 +57,12 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
   }
 
   FutureOr<void> _handleEditText(
-      EditText event, Emitter<MemeEditorState> emit) {}
+      EditText event, Emitter<MemeEditorState> emit) {
+    final state = this.state;
+    if (state is MemeLoaded) {
+      emit(MemeTextEditing(event.idPos, state.meme));
+    }
+  }
 
   FutureOr<void> _handleDeleteText(
       DeleteText event, Emitter<MemeEditorState> emit) {
