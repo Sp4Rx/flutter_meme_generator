@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meme_generator/blocs/meme_editor_bloc.dart';
+import 'package:meme_generator/repository/meme_repo/models/meme_obj.dart';
 
 class MemeTextEditor extends StatelessWidget {
   const MemeTextEditor({Key? key}) : super(key: key);
@@ -18,7 +19,6 @@ class MemeTextEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
     return WillPopScope(
       onWillPop: () async {
         context.read<MemeEditorBloc>().add(EditTextBackPressed());
@@ -35,6 +35,9 @@ class MemeTextEditor extends StatelessWidget {
           },
           builder: (context, state) {
             if (state is MemeTextEditing) {
+              MemeTextObj memeTextObj = state.meme.texts![state.idPos];
+              TextEditingController controller =
+                  TextEditingController(text: memeTextObj.textData);
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
@@ -42,6 +45,7 @@ class MemeTextEditor extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextField(
+                        maxLines: null,
                         controller: controller,
                         style: GoogleFonts.getFont(
                           _fonts[1],
@@ -78,6 +82,20 @@ class MemeTextEditor extends StatelessWidget {
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox.fromSize(
+                        size: const Size(0, 20),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          context.read<MemeEditorBloc>().add(
+                                EditTextSavePressed(
+                                  controller.text,
+                                ),
+                              );
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Save'),
                       ),
                     ],
                   ),

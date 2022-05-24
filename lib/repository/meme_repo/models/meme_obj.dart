@@ -49,6 +49,11 @@ class MemeObj {
     map['id'] = _id;
     return map;
   }
+
+  @override
+  String toString() {
+    return 'MemeObj{_imageUrl: $_imageUrl, _texts: $_texts, _id: $_id}';
+  }
 }
 
 /// textData : "Demo1"
@@ -175,5 +180,10 @@ class MemeTextObj {
     map['foregroundColor'] = _foregroundColor;
     map['bgColor'] = _bgColor;
     return map;
+  }
+
+  @override
+  String toString() {
+    return 'MemeTextObj{_textData: $_textData, _xPos: $_xPos, _yPos: $_yPos, _maxWidth: $_maxWidth, _maxHeight: $_maxHeight, _style: $_style, _fontSize: $_fontSize, _hAlignment: $_hAlignment, _vAlignment: $_vAlignment, _opacity: $_opacity, _foregroundColor: $_foregroundColor, _bgColor: $_bgColor}';
   }
 }

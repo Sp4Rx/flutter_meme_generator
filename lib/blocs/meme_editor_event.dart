@@ -22,3 +22,9 @@ class EditText extends MemeEditorEvent {
 }
 
 class EditTextBackPressed extends MemeEditorEvent {}
+
+class EditTextSavePressed extends MemeEditorEvent {
+  final String textData;
+
+  EditTextSavePressed(this.textData);
+}
