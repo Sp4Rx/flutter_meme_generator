@@ -34,20 +34,16 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
     emit(MemeLoaded(memes[0]));
   }
 
-  FutureOr<void> _handleGenerateMeme(
-      GenerateMeme event, Emitter<MemeEditorState> emit) {
+  Future<FutureOr<void>> _handleGenerateMeme(
+      GenerateMeme event, Emitter<MemeEditorState> emit) async {
     final state = this.state;
     if (state is MemeLoaded) {
-      event.screenshotController.capture().then((value) async {
-        //TODO: Add a intermediate loading state
-        final result = await [Permission.storage].request();
-        final status = result[Permission.storage];
-        if (status == PermissionStatus.granted) {
-          ImageGallerySaver.saveImage(value!, name: 'Meme');
-          emit(MemeGenerated());
-        }
-        //TODO: Handle denied state
-      });
+      //TODO: Add a intermediate loading state
+      final image = await event.screenshotController.capture();
+      await [Permission.storage].request();
+      ImageGallerySaver.saveImage(image!, name: 'Meme');
+      emit(MemeGenerated());
+      //TODO: Handle denied state
     }
   }
 
