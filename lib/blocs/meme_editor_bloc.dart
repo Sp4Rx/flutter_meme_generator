@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,8 +38,8 @@ class MemeEditorBloc extends Bloc<MemeEditorEvent, MemeEditorState> {
           texts: List.from(state.meme.texts!)
             ..add(MemeTextObj.fromJson({
               "textData": "Demo",
-              "xPos": 0,
-              "yPos": 0,
+              "xPos": Random().nextInt(10) + 1,
+              "yPos": Random().nextInt(10) + 1,
               "maxWidth": 120,
               "maxHeight": 100,
               "style": "Roboto",
