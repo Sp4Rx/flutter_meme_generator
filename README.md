@@ -3,6 +3,6 @@
 Generate memes
 
 
-## Screenshots
-<p><img src="https://raw.githubusercontent.com/Sp4Rx/flutter-todo/master/images/demo.gif" width="19%"/></p>
+## Demo
+<p><img src="https://raw.githubusercontent.com/Sp4Rx/flutter_meme_generator/master/images/demo.gif" width="50%"/></p>
 
