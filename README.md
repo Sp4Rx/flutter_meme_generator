@@ -1,6 +1,6 @@
-# meme_generator
+# Meme Generator [![Android CI](https://github.com/Sp4Rx/flutter_meme_generator/actions/workflows/android.yml/badge.svg)](https://github.com/Sp4Rx/flutter_meme_generator/actions/workflows/android.yml)
 
-Generate memes
+Generate memes and editing with some small features
 
 
 ## Demo
