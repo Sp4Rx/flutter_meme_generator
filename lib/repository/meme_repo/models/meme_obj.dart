@@ -56,18 +56,29 @@ class MemeObj {
   }
 }
 
-/// textData : "Demo1"
-/// xPos : 230
-/// yPos : 50
-/// maxWidth : 24
-/// maxHeight : 24
-/// style : "Roboto"
-/// fontSize : 12
-/// hAlignment : "center"
-/// vAlignment : "center"
-/// opacity : 1
-/// foregroundColor : "#000000"
-/// bgColor : "#FFFFFF"
+class MemeAlignment {
+  MemeAlignment({
+    MemeAlignmentType? hAlignment,
+    MemeAlignmentType? vAlignment,
+  });
+  // String? vAlignment,
+}
+
+enum MemeAlignmentType { center, start, end }
+
+class MemeTextStyle {
+  MemeTextStyle({
+    // int? xPos,
+    // int? yPos,
+    required int maxWidth,
+    required int maxHeight,
+    String? style,
+    int? fontSize,
+    double? opacity,
+    String? foregroundColor,
+    String? bgColor,
+  });
+}
 
 class MemeTextObj {
   MemeTextObj({
@@ -78,8 +89,7 @@ class MemeTextObj {
     int? maxHeight,
     String? style,
     int? fontSize,
-    String? hAlignment,
-    String? vAlignment,
+    MemeAlignment? alignment,
     int? opacity,
     String? foregroundColor,
     String? bgColor,

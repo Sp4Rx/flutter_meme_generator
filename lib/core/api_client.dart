@@ -20,16 +20,7 @@ class ApiClient {
       return data;
     } on DioError catch (error) {
       _handleError(error);
-    } catch (error) {
-      _handleError(
-        DioError(
-          requestOptions: RequestOptions(
-            path: url,
-            method: 'GET',
-          ),
-        ),
-      );
-    }
+    } 
   }
 
   Future<dynamic> post(String url, {body}) async {
@@ -39,16 +30,7 @@ class ApiClient {
       return data;
     } on DioError catch (error) {
       _handleError(error);
-    } catch (error) {
-      _handleError(
-        DioError(
-          requestOptions: RequestOptions(
-            path: url,
-            method: 'POST',
-          ),
-        ),
-      );
-    }
+    } 
   }
 
   void _handleError(DioError error) {
